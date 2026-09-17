@@ -1,0 +1,13 @@
+{
+  "name": "cobalt-harness",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A spec-driven component harness: a PRD written as a checklist, run against deterministic gates instead of a human reading for drift.",
+  "scripts": {
+    "dev": "node scripts/serve.js",
+    "gates": "node gates/run.js",
+    "loop": "node lib/loop.js",
+    "demo:reset": "./demo/reset.sh",
+    "demo:run": "npm run demo:reset --silent && node lib/loop.js demo/button-prd.md demo/button.css default,hover,focus,active,disabled,loading"
+  }
+}

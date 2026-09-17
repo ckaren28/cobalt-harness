@@ -1,0 +1,41 @@
+/* Fixture: a Button that passes every gate. Used to prove the gates work
+   before real component code exists, and as the "after" state in the
+   live demo — this is what button-bad.css gets fixed INTO. */
+
+.component {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.component:hover {
+  background: var(--color-accent);
+  filter: brightness(0.96);
+}
+
+.component:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+
+.component:active {
+  filter: brightness(0.9);
+}
+
+.component:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.component[data-state="loading"] {
+  color: transparent;
+  pointer-events: none;
+}

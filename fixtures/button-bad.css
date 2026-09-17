@@ -1,0 +1,43 @@
+/* Fixture: a Button with two deliberate violations, staged for the live demo
+   on Sept 23 (see presentation-outline.md, slide 14/20 — "let a gate fail on purpose").
+
+   Violation 1 — hardcoded hex instead of var(--color-accent). token-only fails.
+   Violation 2 — no :focus-visible rule at all. focus-visible fails.
+
+   Run: node gates/token-only.js fixtures/button-bad.css
+        node gates/focus-visible.js fixtures/button-bad.css
+   Then hand-fix into button-good.css and re-run to show both passing. */
+
+.component {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  background: #2C4A8C; /* <-- should be var(--color-accent) */
+  color: var(--color-accent-text);
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.component:hover {
+  filter: brightness(0.96);
+}
+
+/* <-- :focus-visible rule missing entirely */
+
+.component:active {
+  filter: brightness(0.9);
+}
+
+.component:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.component[data-state="loading"] {
+  color: transparent;
+  pointer-events: none;
+}

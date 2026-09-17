@@ -1,0 +1,73 @@
+/* Real button implementation, built straight from prds/button.md.
+   Nothing here is decorative-only — this is what the harness's gates check. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  border: none;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  transition: filter 0.15s ease, opacity 0.15s ease;
+}
+
+.btn--secondary {
+  background: var(--color-surface-raised);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-text);
+}
+
+.btn--sm {
+  padding: var(--space-1) var(--space-3);
+  font-size: 0.85rem;
+}
+
+.btn:hover,
+.btn.demo-hover {
+  filter: brightness(0.94);
+}
+
+.btn:focus-visible,
+.btn.demo-focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+
+.btn:active,
+.btn.demo-active {
+  filter: brightness(0.88);
+}
+
+.btn:disabled,
+.btn.demo-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn.demo-loading {
+  color: transparent;
+  position: relative;
+  pointer-events: none;
+}
+.btn.demo-loading::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent-text);
+  border-top-color: transparent;
+  animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }

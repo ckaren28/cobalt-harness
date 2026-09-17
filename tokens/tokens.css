@@ -1,0 +1,52 @@
+/* Generated from Figma file: figma.com/design/lwVusDIbqN3cAc1j5x0pab/Curb
+   Collection: tokens · repalette Sept 17 2026 (steel + cobalt, Arne Jacobsen /
+   2001: A Space Odyssey reference, 1950s-60s futurism vs. today's)
+   DO NOT hand-edit hex values here — change them in Figma and regenerate.
+   This file is the single source of truth the gates check components against. */
+
+:root {
+  /* ---- raw palette ---- */
+  --palette-graphite: #16181D;
+  --palette-steel-100: #E4E6EA;
+  --palette-steel-300: #B7BDC7;
+  --palette-steel-700: #4B505C;
+  --palette-white: #FFFFFF;
+  --palette-cobalt: #2C4A8C;
+  --palette-neon-lime: #C6FF00;
+  --palette-neon-magenta: #D100AF;
+  --palette-signal-red: #D7263D;
+  --palette-signal-green: #0C7A6E;
+  --palette-signal-amber: #FFB020;
+
+  /* ---- semantic (aliases onto the palette above) ---- */
+  --color-surface: var(--palette-steel-100);
+  --color-surface-raised: var(--palette-white);
+  --color-accent: var(--palette-cobalt);
+  --color-accent-text: var(--palette-white);
+  --color-text: var(--palette-graphite);
+  --color-text-muted: var(--palette-steel-700);
+  --color-text-inverse: var(--palette-white);
+  --color-highlight: var(--palette-neon-lime);
+  --color-highlight-text: var(--palette-graphite);
+  --color-danger: var(--palette-signal-red);
+  --color-danger-text: var(--palette-white);
+  --color-success: var(--palette-signal-green);
+  --color-success-text: var(--palette-white);
+  --color-warning: var(--palette-signal-amber);
+  --color-warning-text: var(--palette-graphite);
+  --color-border: var(--palette-steel-300);
+  --color-focus: var(--palette-neon-magenta);
+
+  /* ---- space ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+
+  /* ---- radius ---- */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-pill: 999px;
+}
