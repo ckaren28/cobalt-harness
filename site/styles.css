@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Michroma&family=Space+Grotesk:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Space+Grotesk:wght@400;500;600&display=swap');
 
 [data-theme="dark"] {
   --color-surface: var(--palette-graphite);
@@ -26,12 +26,15 @@ body {
 }
 
 h1, h2, .mono-label {
-  font-family: 'Michroma', 'Space Grotesk', sans-serif;
-  letter-spacing: 0.02em;
+  font-family: 'Fraunces', Georgia, serif;
+  letter-spacing: 0;
 }
 
 h1 {
-  font-size: clamp(2rem, 6vw, 3.2rem);
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(2.2rem, 6vw, 3.6rem);
   margin: 0 0 var(--space-2);
   line-height: 1.05;
 }
@@ -93,21 +96,43 @@ header {
   font-size: 0.95rem;
 }
 
-.terminal {
-  background: var(--palette-graphite);
-  color: var(--palette-steel-100);
+/* a quiet, printed-transcript read instead of a black hacker console --
+   the loop's real output, but presented like a lab report, not a terminal */
+.report {
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
-  padding: var(--space-4);
-  font-family: 'SF Mono', 'Menlo', monospace;
-  font-size: 0.82rem;
-  line-height: 1.6;
-  overflow-x: auto;
-  white-space: pre;
+  overflow: hidden;
 }
-.terminal .pass { color: var(--palette-neon-lime); }
-.terminal .fixed { color: var(--palette-cobalt-light, #7d9fe0); }
-.terminal .blocked { color: #ff6b6b; }
-.terminal .pending-line { color: var(--palette-steel-300); }
+.report-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  font-family: 'SF Mono', 'Menlo', monospace;
+  font-size: 0.85rem;
+}
+.report-row:last-child { border-bottom: none; }
+
+.tag {
+  flex-shrink: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  width: 92px;
+  text-align: center;
+}
+.tag--pass    { background: var(--color-highlight); color: var(--color-highlight-text); }
+.tag--fixed   { background: var(--color-accent); color: var(--color-accent-text); }
+.tag--blocked { background: var(--color-danger); color: var(--color-danger-text); }
+.tag--pending { background: var(--color-surface); color: var(--color-text-muted); border: 1px solid var(--color-border); }
+
+.report-text { color: var(--color-text); }
+.report-reason { display: block; color: var(--color-text-muted); font-size: 0.8rem; margin-top: 2px; }
 
 .run-note {
   font-size: 0.8rem;

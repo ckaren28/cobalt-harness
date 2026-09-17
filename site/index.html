@@ -76,21 +76,44 @@
   <h2>The loop, actually running</h2>
   <p>This is a real, unedited transcript — <code>node lib/loop.js demo/button-prd.md demo/button.css</code>
      against a button deliberately built with a hardcoded color and no focus ring.</p>
-  <div class="terminal">Running the loop against button.css using button-prd.md
-────────────────────────────────────────────────────────────
-<span class="fixed">⟳ [AUTO-FIXED      ] All color values reference tokens; no raw hex or rgb
-    raw hex color: #2C4A8C -&gt; --color-accent</span>
-<span class="pass">✓ [PASS            ] All spacing references the space scale; no bare px
-✓ [PASS            ] Every required state has a rule: default, hover, focus, active, disabled, loading</span>
-<span class="blocked">✗ [BLOCKED         ] Visible focus ring using `--color-focus`, not the browser default outline
-    no :focus-visible rule found at all</span>
-<span class="pass">✓ [PASS            ] Token contrast pairs meet WCAG AA</span>
-<span class="pending-line">… [PENDING         ] Props match the API table exactly
-    not yet implemented — needs a real component file to introspect
-… [PENDING         ] Renders in isolation with no console errors
-    not yet implemented — needs a real React component to mount</span>
-────────────────────────────────────────────────────────────
-Loop finished, 1 item(s) blocked — see reasons above.</div>
+  <div class="report">
+    <div class="report-row">
+      <span class="tag tag--fixed">Auto-fixed</span>
+      <span class="report-text">All color values reference tokens; no raw hex or rgb
+        <span class="report-reason">raw hex color found → replaced with var(--color-accent)</span>
+      </span>
+    </div>
+    <div class="report-row">
+      <span class="tag tag--pass">Pass</span>
+      <span class="report-text">All spacing references the space scale; no bare px</span>
+    </div>
+    <div class="report-row">
+      <span class="tag tag--pass">Pass</span>
+      <span class="report-text">Every required state has a rule: default, hover, focus, active, disabled, loading</span>
+    </div>
+    <div class="report-row">
+      <span class="tag tag--blocked">Blocked</span>
+      <span class="report-text">Visible focus ring using <code>--color-focus</code>, not the browser default outline
+        <span class="report-reason">no :focus-visible rule found at all — a design decision, not something to guess at</span>
+      </span>
+    </div>
+    <div class="report-row">
+      <span class="tag tag--pass">Pass</span>
+      <span class="report-text">Token contrast pairs meet WCAG AA</span>
+    </div>
+    <div class="report-row">
+      <span class="tag tag--pending">Pending</span>
+      <span class="report-text">Props match the API table exactly
+        <span class="report-reason">needs a real component file to introspect</span>
+      </span>
+    </div>
+    <div class="report-row">
+      <span class="tag tag--pending">Pending</span>
+      <span class="report-text">Renders in isolation with no console errors
+        <span class="report-reason">needs a real React component to mount</span>
+      </span>
+    </div>
+  </div>
   <p class="run-note">The loop fixed what was unambiguous, flagged what needed a real decision
     instead of guessing, and left the two gates that need real component code marked pending
     rather than faked. Reset and re-run yourself: <code>./demo/reset.sh &amp;&amp; node lib/loop.js
