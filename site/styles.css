@@ -129,15 +129,16 @@ footer {
 }
 footer a { color: var(--color-accent); }
 
-/* the knife -- a skewed blade that sweeps across on theme toggle */
-.blade {
+/* the iris -- a circular reveal centered on the toggle button, closer to the
+   airlocks and apertures the reference is actually full of than a diagonal wipe was */
+.iris {
   position: fixed;
-  inset: -20% -30%;
+  inset: 0;
   background: var(--color-text);
-  transform: translateX(-160%) skewX(-14deg);
-  transition: transform 0.45s cubic-bezier(.76, 0, .24, 1);
+  clip-path: circle(0% at var(--iris-x, 50%) var(--iris-y, 50%));
+  transition: clip-path 0.55s cubic-bezier(.76, 0, .24, 1);
   z-index: 999;
   pointer-events: none;
 }
-.blade.sweep-in { transform: translateX(0) skewX(-14deg); }
-.blade.sweep-out { transform: translateX(160%) skewX(-14deg); }
+.iris.sweep-in { clip-path: circle(150% at var(--iris-x, 50%) var(--iris-y, 50%)); }
+.iris.sweep-out { clip-path: circle(0% at var(--iris-x, 50%) var(--iris-y, 50%)); }

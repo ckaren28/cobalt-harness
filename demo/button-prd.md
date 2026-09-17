@@ -21,13 +21,13 @@ Primary interactive trigger. Used standalone and inside the table row (as the gh
 `--color-text`, `--color-border`, `--color-focus`, `--space-2`, `--space-4`, `--radius-pill`
 
 ## Acceptance criteria
-- [x] All color values reference tokens; no raw hex or rgb — gate: token-only (loop: auto-fixed: --color-accent)
-- [x] All spacing references the space scale; no bare px — gate: token-only
-- [x] Every required state has a rule: default, hover, focus, active, disabled, loading — gate: states-present
-- [!] Visible focus ring using `--color-focus`, not the browser default outline — gate: focus-visible (loop: no :focus-visible rule found at all)
-- [x] Token contrast pairs meet WCAG AA — gate: contrast
-- [~] Props match the API table exactly — gate: props-match (loop: gate not yet implemented)
-- [~] Renders in isolation with no console errors — gate: renders-clean (loop: gate not yet implemented)
+- [ ] All color values reference tokens; no raw hex or rgb — gate: token-only
+- [ ] All spacing references the space scale; no bare px — gate: token-only
+- [ ] Every required state has a rule: default, hover, focus, active, disabled, loading — gate: states-present
+- [ ] Visible focus ring using `--color-focus`, not the browser default outline — gate: focus-visible
+- [ ] Token contrast pairs meet WCAG AA — gate: contrast
+- [ ] Props match the API table exactly — gate: props-match
+- [ ] Renders in isolation with no console errors — gate: renders-clean
 
 ## Exit criteria
 All three variants and every listed state render from tokens only, the focus ring is visibly

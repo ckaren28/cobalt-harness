@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/site/components.css">
 </head>
 <body>
-<div class="blade" id="blade"></div>
+<div class="iris" id="iris"></div>
 
 <div class="wrap">
   <header>
@@ -103,7 +103,7 @@ Loop finished, 1 item(s) blocked — see reasons above.</div>
 </div>
 
 <script>
-const blade = document.getElementById('blade');
+const iris = document.getElementById('iris');
 const html = document.documentElement;
 const btn = document.getElementById('theme-toggle');
 let dark = false;
@@ -112,19 +112,26 @@ let animating = false;
 btn.addEventListener('click', () => {
   if (animating) return;
   animating = true;
-  blade.classList.add('sweep-in');
-  blade.addEventListener('transitionend', function onIn(e) {
-    if (e.propertyName !== 'transform') return;
-    blade.removeEventListener('transitionend', onIn);
+
+  // origin the iris at the button's own center, like an aperture opening from the thing you pressed
+  const rect = btn.getBoundingClientRect();
+  const originX = ((rect.left + rect.width / 2) / window.innerWidth) * 100;
+  const originY = ((rect.top + rect.height / 2) / window.innerHeight) * 100;
+  html.style.setProperty('--iris-x', originX + '%');
+  html.style.setProperty('--iris-y', originY + '%');
+
+  iris.classList.add('sweep-in');
+  iris.addEventListener('transitionend', function onIn(e) {
+    if (e.propertyName !== 'clip-path') return;
+    iris.removeEventListener('transitionend', onIn);
     dark = !dark;
     html.setAttribute('data-theme', dark ? 'dark' : 'light');
-    btn.textContent = dark ? 'Shift the light' : 'Shift the light';
-    blade.classList.remove('sweep-in');
-    blade.classList.add('sweep-out');
-    blade.addEventListener('transitionend', function onOut(e2) {
-      if (e2.propertyName !== 'transform') return;
-      blade.removeEventListener('transitionend', onOut);
-      blade.classList.remove('sweep-out');
+    iris.classList.remove('sweep-in');
+    iris.classList.add('sweep-out');
+    iris.addEventListener('transitionend', function onOut(e2) {
+      if (e2.propertyName !== 'clip-path') return;
+      iris.removeEventListener('transitionend', onOut);
+      iris.classList.remove('sweep-out');
       animating = false;
     }, { once: true });
   }, { once: true });
