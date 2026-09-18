@@ -23,10 +23,13 @@
   <p class="provenance">
     A personal exploration built to test a spec-driven component pipeline: a PRD written as a
     checklist, and a loop that implements it against deterministic gates instead of a human
-    reading for drift. The palette and form take Arne Jacobsen's AJ cutlery — the set that
-    appeared in <em>2001: A Space Odyssey</em> — as a reference point: what "futuristic" looked
-    like in 1959 (brushed steel, tapered, no ornament) against what it looks like now.
-    Press the button.
+    reading for drift. The pattern it's modeling is ordinary — a component that looks correct in
+    isolation and quietly breaks the moment something changes everywhere at once: a rebrand, an
+    accessibility pass, a dark mode rollout. Press the button below. If a hardcoded color had
+    been used anywhere on this page instead of a token, it would have just failed to respond.
+    The palette and form take Arne Jacobsen's AJ cutlery — the set that appeared in
+    <em>2001: A Space Odyssey</em> — as a reference point: what "futuristic" looked like in 1959
+    (brushed steel, tapered, no ornament) against what it looks like now.
   </p>
 
   <h2>The components</h2>
@@ -70,8 +73,11 @@
   </div>
 
   <h2>Input · Badge · Table row</h2>
-  <p class="pending">Not built yet — Figma tokens are in place, component work is scheduled before
-    Sept 23. Shown here once they exist; not faked in the meantime.</p>
+  <p class="pending">Designed, not coded yet. All three are built out in Figma — Input across 6
+    states, Badge across 4 variants × dot on/off, Table row composing real Badge and Button
+    instances to prove the set is a system rather than four unrelated pieces — but none of them
+    have gone through the PRD-and-gates pipeline. Shown here once the code exists; not faked in
+    the meantime.</p>
 
   <h2>The loop, actually running</h2>
   <p>This is a real, unedited transcript — <code>node lib/loop.js demo/button-prd.md demo/button.css</code>
