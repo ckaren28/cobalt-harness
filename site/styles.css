@@ -14,6 +14,41 @@
   --color-focus: var(--palette-cobalt-tint);
 }
 
+/* ---- Second palette: Ember ----
+   A genuinely different identity, not a hue-shifted copy: warm neutrals and a
+   coral-red accent instead of cool steel and cobalt. Every value below is
+   computed against real WCAG contrast, same as the cobalt fix above:
+     white text on the accent            -- 5.11:1  (AA normal text)
+     accent focus ring, light surface    -- 4.64:1  (AA non-text)
+     accent focus ring, light raised     -- 5.11:1  (AA non-text)
+     accent focus ring, dark surface     -- 3.34:1  (barely AA non-text)
+     accent focus ring, dark raised      -- 2.63:1  (FAILS -- same bug as cobalt)
+     tint focus ring, dark surface       -- 10.98:1 (the fix)
+     tint focus ring, dark raised        -- 8.66:1  (the fix)
+   The point being made on purpose: swapping the entire visual identity took
+   zero changes to components.css. Only token values moved. */
+[data-palette="ember"] {
+  --color-accent: #C93A22;
+  --color-accent-text: #FFFFFF;
+  --color-focus: #C93A22;
+  --color-surface: #FAF3EC;
+  --color-surface-raised: #FFFFFF;
+  --color-text: #241A14;
+  --color-text-muted: #6E6259;
+  --color-border: #E4D8CC;
+}
+[data-palette="ember"][data-theme="dark"] {
+  --color-surface: #241A14;
+  --color-surface-raised: #3A2C22;
+  --color-text: #F3E9E1;
+  --color-text-muted: #C4B3A6;
+  --color-border: #3A2C22;
+  /* Same accessibility bug as cobalt, same fix: the raw accent fails 3:1 non-text
+     contrast against the dark surfaces (2.63:1), so dark mode remaps the focus
+     ring to a light tint instead (8.66:1). */
+  --color-focus: #F0C7B4;
+}
+
 * { box-sizing: border-box; }
 
 body {

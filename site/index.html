@@ -17,7 +17,10 @@
       <h1>COBALT</h1>
       <p class="tagline">A small design system, and the loop that keeps its code honest against its own spec.</p>
     </div>
-    <button class="btn" id="theme-toggle" type="button">Shift the light</button>
+    <div style="display:flex; gap:var(--space-2);">
+      <button class="btn btn--secondary" id="palette-toggle" type="button">Change the accent</button>
+      <button class="btn" id="theme-toggle" type="button">Shift the light</button>
+    </div>
   </header>
 
   <p class="provenance">
@@ -168,6 +171,19 @@ btn.addEventListener('click', () => {
       animating = false;
     }, { once: true });
   }, { once: true });
+});
+
+const paletteBtn = document.getElementById('palette-toggle');
+let ember = false;
+paletteBtn.addEventListener('click', () => {
+  ember = !ember;
+  if (ember) {
+    html.setAttribute('data-palette', 'ember');
+    paletteBtn.textContent = 'Back to cobalt';
+  } else {
+    html.removeAttribute('data-palette');
+    paletteBtn.textContent = 'Change the accent';
+  }
 });
 </script>
 </body>
