@@ -25,9 +25,13 @@
     checklist, and a loop that implements it against deterministic gates instead of a human
     reading for drift. The pattern it's modeling is ordinary — a component that looks correct in
     isolation and quietly breaks the moment something changes everywhere at once: a rebrand, an
-    accessibility pass, a dark mode rollout. Press the button below. If a hardcoded color had
-    been used anywhere on this page instead of a token, it would have just failed to respond.
-    The palette and form take Arne Jacobsen's AJ cutlery — the set that appeared in
+    accessibility pass, a dark mode rollout. Press the button below and this page's own theme
+    system will show you a real instance of that: the focus ring's cobalt tone passes AA
+    non-text contrast at 6.8:1 in light mode, but drops to 1.06:1 against the dark surface —
+    invisible — so the dark theme has to swap the token to a lighter tint to stay accessible.
+    That's not a hardcoded fix; it's the token itself changing per theme, which is the whole
+    argument for why hardcoding is the failure mode this project is built to catch. The palette
+    and form take Arne Jacobsen's AJ cutlery — the set that appeared in
     <em>2001: A Space Odyssey</em> — as a reference point: what "futuristic" looked like in 1959
     (brushed steel, tapered, no ornament) against what it looks like now.
   </p>

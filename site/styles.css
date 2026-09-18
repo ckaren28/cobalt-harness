@@ -6,6 +6,12 @@
   --color-text: var(--palette-steel-100);
   --color-text-muted: var(--palette-steel-300);
   --color-border: var(--palette-steel-700);
+  /* Cobalt's own focus ring passes AA non-text contrast in light mode (6.8:1 on
+     steel-100, 8.5:1 on white) but fails badly against dark surfaces (2.08:1 on
+     graphite, 1.06:1 on steel-700 -- both well under the 3:1 bar). A real
+     accessibility pass on a real theme rollout has to catch this: the token
+     itself has to change per theme, not just the surface it sits on. */
+  --color-focus: var(--palette-cobalt-tint);
 }
 
 * { box-sizing: border-box; }
